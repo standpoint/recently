@@ -1,4 +1,6 @@
-/** Determines 
+/** Lesson2HW1 - homework of the 2nd lesson 
+ * 
+ * Determines 
  * 1) is triangle exist and 
  * 2) what is the type of one: isosceles, equilateral or scalene
  *    
@@ -9,7 +11,7 @@
 public class Lesson2HW1 {
 
 	//Method 'checkAngle' check is the triangle acute-angled, right-angle or obtuse
-	public static void checkAngle(double a, double b, double c) {
+	private static void checkAngle(double a, double b, double c) {
 
 		if ((Math.pow(a, 2) + Math.pow(b, 2)) > Math.pow(c, 2) && 
 				(Math.pow(b, 2) + Math.pow(c, 2)) > Math.pow(a, 2) &&
@@ -29,7 +31,7 @@ public class Lesson2HW1 {
 	public static void main(String[] args) {
 
 		// Coordinates of three points A(x1,y1), B(x2,y2), C(x3,y3) and segments a,b,c 
-		int x1, y1, x2, y2, x3, y3;
+		final int x1, y1, x2, y2, x3, y3;
 		double a, b, c;
 		x1 = 10;
 		y1 = 5;
