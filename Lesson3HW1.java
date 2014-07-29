@@ -4,8 +4,11 @@
 public class Lesson3HW1 {
 
 	public static void main(String[] args) {
-		short year = 1580;
-		if ((year % 4) == 0 && (year % 100) != 0 && year >= 1582 || (year % 400) == 0){
+		short year = 1200;
+		boolean equal;
+		equal = ((year % 4) == 0 || (year % 400) == 0) && (year % 100) != 0 && year >= 1582;
+		
+		if (equal){
 			System.out.println(year + " is a leap year");
 		}
 		else if (year < 1582){
