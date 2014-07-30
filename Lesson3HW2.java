@@ -5,8 +5,8 @@ public class Lesson3HW2 {
 		double prod, summ;
 		int n = 2;
 		summ = 0;
+		prod = 1;		
 		for (int i = 1; i <= n; i++){
-			prod = 1;
 			for(int j = 1; j <= i; j++){
 				prod = prod * (j + 1);
 			}
