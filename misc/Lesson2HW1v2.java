@@ -17,13 +17,13 @@ public class Lesson2HW1v2 {
 	public static void checkAngle(BigDecimal aa, BigDecimal bb, BigDecimal cc) {
 
 		if (aa.compareTo(BigDecimal.valueOf(90.000000)) < 0 && bb.compareTo(BigDecimal.valueOf(90.000000)) < 0 && cc.compareTo(BigDecimal.valueOf(90.000000)) < 0) {
-			System.out.println(" Ð¸ Ð¾ÑÑ‚Ñ€Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¼");
+			System.out.println(" è îñòðîóãîëüíûì");
 		}
 		else if (aa.compareTo(BigDecimal.valueOf(90.000000)) == 0 || bb.compareTo(BigDecimal.valueOf(90.000000)) == 0 || cc.compareTo(BigDecimal.valueOf(90.000000)) == 0) {
-			System.out.println(" Ð¸ Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¼");
+			System.out.println(" è ïðÿìîóãîëüíûì");
 		}
 		else {
-			System.out.println(" Ð¸ Ñ‚ÑƒÐ¿Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¼");
+			System.out.println(" è òóïîóãîëüíûì");
 		}
 	}
 
@@ -41,7 +41,7 @@ public class Lesson2HW1v2 {
 		x3 = 4.0;
 		y3 = 0.0;
 		
-		String err = "ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°Ð¼Ð¸ Ð² Ð·Ð°Ð´Ð°Ð½Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐºÐ°Ñ… A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ").";
+		String err = "Íåâîçìîæíî ïîñòðîèòü òðåóãîëüíèê ñ âåðøèíàìè â çàäàííûõ òî÷êàõ A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ").";
 		
 		BigDecimal alpha = new BigDecimal(0.0);
 		BigDecimal betta = new BigDecimal(0.0);
@@ -70,14 +70,14 @@ public class Lesson2HW1v2 {
 
 				// Check type of the triangle
 				if (alpha.compareTo(betta) == 0 && betta.compareTo(gamma) == 0 && alpha.compareTo(gamma) == 0) {
-					System.out.println("Ð¢Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°Ð¼Ð¸ A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ") ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ñ€Ð°Ð²Ð½Ð¾ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð½Ð¸Ð¼");
+					System.out.println("Òðåóãîëüíèê ñ âåðøèíàìè A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ") ÿâëÿåòñÿ ðàâíîñòîðîííèì");
 				}
 				else if (alpha.compareTo(betta) == 0 || betta.compareTo(gamma) == 0 || alpha.compareTo(gamma) == 0) {
-					System.out.print("Ð¢Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°Ð¼Ð¸ A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ") ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ñ€Ð°Ð²Ð½Ð¾Ð±ÐµÐ´Ñ€ÐµÐ½Ð½Ñ‹Ð¼");
+					System.out.print("Òðåóãîëüíèê ñ âåðøèíàìè A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ") ÿâëÿåòñÿ ðàâíîáåäðåííûì");
 					checkAngle(alpha,betta,gamma);
 				}
 				else {
-					System.out.print("Ð¢Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°Ð¼Ð¸ A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ") ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ñ€Ð°Ð·Ð½Ð¾ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð½Ð¸Ð¼");
+					System.out.print("Òðåóãîëüíèê ñ âåðøèíàìè A(" + x1 + ", " + y1 + "), B(" + x2 + ", " + y2 + "), C(" + x3 + ", " + y3 + ") ÿâëÿåòñÿ ðàçíîñòîðîííèì");
 					checkAngle(alpha,betta,gamma);
 				}
 			} 

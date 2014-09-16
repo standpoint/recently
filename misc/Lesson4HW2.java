@@ -19,7 +19,7 @@ public class Lesson4HW2 {
 				else {
 					System.out.print(i);
 				}
-				j--;				
+				j--;
 			}
 			System.out.println(i);
 			j = lim;
