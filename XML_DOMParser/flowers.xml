@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:noNamespaceSchemaLocation="flower.xsd">
+    <flower id="p111">
+        <name>Rose</name>
+        <soil>podzolista</soil>
+        <origin>Ukraine</origin>
+        <parameters>
+            <color>green</color>
+            <leaf>yellow</leaf>
+            <size>0.5</size>
+        </parameters>
+        <growing>
+            <temprature>35</temprature>
+            <light>yes</light>
+            <water>yes</water>
+        </growing>
+        <multiplying>leaf</multiplying>
+    </flower>
+    <flower id="p112">
+        <name>Owk</name>
+        <soil>podzolista</soil> 
+        <origin>Ukraine</origin>
+        <parameters>
+            <color>green</color>
+            <leaf>yellow</leaf>
+            <size>7.5</size>
+        </parameters>
+        <growing>
+            <temprature>20</temprature>
+            <light>yes</light>
+         </growing>
+        <multiplying>leaf</multiplying>
+    </flower>
+    
+</flowers>

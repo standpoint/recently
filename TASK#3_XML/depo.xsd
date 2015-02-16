@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="bank" type="TypeBank" />
+  <xs:complexType name="TypeBank">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="country" type="TypeContry" />
+      <xs:element name="type" type="TypeDepositeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TypeContry">
+    <xs:restriction base="xs:NCName">
+      <xs:enumeration value="Ukraine" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TypeDepositeType">
+    <xs:sequence>
+      <xs:element name="demand" type="TypeDeposite" />
+      <xs:element name="fixed" type="TypeDeposite" />
+      <xs:element name="payment" type="TypeDeposite" />
+      <xs:element name="savings" type="TypeDeposite" />
+      <xs:element name="metal" type="TypeDeposite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TypeDeposite">
+    <xs:sequence>
+      <xs:element name="depositor" type="TypeDepositor" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TypeDepositor">
+    <xs:sequence>
+      <xs:element name="fullname" type="TypeFullname" />
+      <xs:element name="account" type="TypeAccount" />
+      <xs:element name="amount" type="TypeAmount" />
+      <xs:element name="profitability" type="TypeProfit" />
+      <xs:element name="period" type="TypePeriod" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="TypeFullname">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][a-z]*\s[A-Z][.][A-Z][.]"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TypeAccount">
+    <xs:restriction base="xs:long">
+      <xs:minExclusive value="20000000000000"></xs:minExclusive>
+      <xs:maxExclusive value="30000000000000"></xs:maxExclusive>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TypeAmount">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2" />
+      <xs:minInclusive value="100.00" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TypeProfit">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2" />
+      <xs:minInclusive value="0.50"></xs:minInclusive>
+      <xs:maxExclusive value="33.00"></xs:maxExclusive>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TypePeriod">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="31" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

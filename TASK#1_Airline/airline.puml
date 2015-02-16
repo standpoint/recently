@@ -1,0 +1,21 @@
+@startuml
+abstract class aircrafts.Aircraft
+abstract class airlines.fleets.Fleet
+class aircrafts.Freighter
+class aircrafts.Liner
+class airlines.Airline
+class airlines.fleets.CargoFleet
+class airlines.fleets.PassengerFleet
+class application.AirlineDemo
+class application.Initialization
+aircrafts.Freighter --|> aircrafts.Aircraft
+aircrafts.Liner --|> aircrafts.Aircraft
+airlines.fleets.CargoFleet --|> airlines.fleets.Fleet
+airlines.fleets.PassengerFleet --|> airlines.fleets.Fleet
+application.AirlineDemo -- airlines.Airline
+application.AirlineDemo -- application.Initialization
+application.AirlineDemo -- airlines.fleets.Fleet
+application.Initialization -- airlines.fleets.Fleet
+application.Initialization -- airlines.Airline
+airlines.fleets.Fleet -- aircrafts.Aircraft
+@enduml

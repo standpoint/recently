@@ -1,0 +1,73 @@
+show databases;
+
+select mydb;
+
+create database mydb4;
+
+use mydb4;
+
+create table mytable(id int not null auto_increment, name varchar(10) not null, address varchar(10) not null, primary key(id));
+
+create table mytable2(id int not null auto_increment, city varchar(10) not null, primary key(id));
+
+show tables;
+
+alter table mytable add id_city int not null;
+
+alter table mytable add constraint my_const foreign key(id_city) references mytable2(id) on delete restrict;
+
+insert mytable2(city) value ('Kiev');
+
+select * from mytable2;
+
+insert mytable2(city) values ('Rio');
+
+insert into mytable (name, address, id_city) value('Vasya','Lepse 8',1);
+
+insert into mytable (name, address, id_city) value('Petya','Lepse 13',2);
+
+select * from mytable;
+
+update mytable set name='Kolia', address='sss sss' where id=1;
+
+select * from mytable;
+
+insert into mytable(name,address,id_city) values('Kolya','bbbb bb',1);
+
+select name, address from mytable;
+
+update mytable set name='Kolia' where id=3;
+
+select name from mytable;
+
+select name from mytable where name='Kolia';
+
+select distinct name from mytable where name='Kolia';
+
+select mytable.name, mytable.address, mytable2.city from mytable join mytable2 on mytable.id_city=mytable2.id;
+
+select mytable.name, mytable.address, mytable2.city from mytable join mytable2 on mytable.id_city=mytable2.id where name='Petya';
+
+select tab1.name from (select mytable.name, mytable.address, mytable2.city from mytable join mytable2 on mytable.id_city=mytable2.id) as tab1 where name='Petya';
+
+select name from mytable order by name asc;
+
+select name from mytable order by name desc;
+
+create table mytable3(id int not null auto_increment, name varchar(20), salary int not null, primary key(id));
+
+insert into mytable3(name,salary) values ('Vasyil',100);
+
+insert into mytable3(name,salary) values ('Vasyil',200);
+
+insert into mytable3(name,salary) values ('Petia',500);
+
+select * from mytable3;
+
+select name, max(salary) from mytable3 group by name;
+
+create index ind1 on mytable(name asc);
+
+create index ind1 on mytable(name asc);
+
+drop index ind1 on mytable;

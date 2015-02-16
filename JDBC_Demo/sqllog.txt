@@ -1,0 +1,239 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| test               |
+| world              |
++--------------------+
+7 rows in set (0.31 sec)
+
+mysql> select mydb;
+
+mysql> create database mydb4;
+Query OK, 1 row affected (0.11 sec)
+
+mysql> use mydb4;
+Database changed
+mysql> create table mytable(id int not null auto_increment, name varchar(10) not null, address varchar(10) not null, primary key(id));
+Query OK, 0 rows affected (1.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_mydb4 |
++-----------------+
+| mytable         |
++-----------------+
+1 row in set (0.05 sec)
+
+mysql> create table mytable2(id int not null auto_increment, city varchar(10) not null, primary key(id));
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_mydb4 |
++-----------------+
+| mytable         |
+| mytable2        |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table mytable add id_city int not null;
+Query OK, 0 rows affected (0.98 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table mytable add constraint my_const foreign key(id_city) references mytable2(id) on delete restrict;
+Query OK, 0 rows affected (1.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> insert mytable2(city) value ('Kiev');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from mytable2;
++----+------+
+| id | city |
++----+------+
+|  1 | Kiev |
++----+------+
+1 row in set (0.06 sec)
+
+mysql>
+mysql> insert mytable2(city) values ('Rio');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into mytable (name, address, id_city) value('Vasya','Lepse 8',1);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into mytable (name, address, id_city) value('Petya','Lepse 13',2);
+
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from mytable;
++----+-------+----------+---------+
+| id | name  | address  | id_city |
++----+-------+----------+---------+
+|  1 | Vasya | Lepse 8  |       1 |
+|  2 | Petya | Lepse 13 |       2 |
++----+-------+----------+---------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> update mytable set name='Kolia', address='sss sss' where id=1;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from mytable;
++----+-------+----------+---------+
+| id | name  | address  | id_city |
++----+-------+----------+---------+
+|  1 | Kolia | sss sss  |       1 |
+|  2 | Petya | Lepse 13 |       2 |
++----+-------+----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> insert into mytable(name,address,id_city) values('Kolya','bbbb bb',1);
+Query OK, 1 row affected (0.09 sec)
+
+mysql>
+mysql> select name, address from mytable;
++-------+----------+
+| name  | address  |
++-------+----------+
+| Kolia | sss sss  |
+| Petya | Lepse 13 |
+| Kolya | bbbb bb  |
++-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> update mytable set name='Kolia' where id=3;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select name from mytable;
++-------+
+| name  |
++-------+
+| Kolia |
+| Petya |
+| Kolia |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> select name from mytable where name='Kolia';
++-------+
+| name  |
++-------+
+| Kolia |
+| Kolia |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct name from mytable where name='Kolia';
++-------+
+| name  |
++-------+
+| Kolia |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select mytable.name, mytable.address, mytable2.city from mytable join mytable2 on mytable.id_city=mytable2.id;
++-------+----------+------+
+| name  | address  | city |
++-------+----------+------+
+| Kolia | sss sss  | Kiev |
+| Petya | Lepse 13 | Rio  |
+| Kolia | bbbb bb  | Kiev |
++-------+----------+------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> select mytable.name, mytable.address, mytable2.city from mytable join mytable2 on mytable.id_city=mytable2.id where name='Petya';
++-------+----------+------+
+| name  | address  | city |
++-------+----------+------+
+| Petya | Lepse 13 | Rio  |
++-------+----------+------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select tab1.name from (select mytable.name, mytable.address, mytable2.city from mytable join mytable2 on mytable.id_city=mytable2.id) as tab1 where name='Petya';
++-------+
+| name  |
++-------+
+| Petya |
++-------+
+1 row in set (0.06 sec)
+
+mysql>
+mysql> select name from mytable order by name asc;
++-------+
+| name  |
++-------+
+| Kolia |
+| Kolia |
+| Petya |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> select name from mytable order by name desc;
++-------+
+| name  |
++-------+
+| Petya |
+| Kolia |
+| Kolia |
++-------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> create table mytable3(id int not null auto_increment, name varchar(20), salary int not null, primary key(id));
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> insert into mytable3(name,salary) values ('Vasyil',100);
+Query OK, 1 row affected (0.37 sec)
+
+mysql> insert into mytable3(name,salary) values ('Vasyil',200);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into mytable3(name,salary) values ('Petia',500);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from mytable3;
++----+--------+--------+
+| id | name   | salary |
++----+--------+--------+
+|  1 | Vasyil |    100 |
+|  2 | Vasyil |    200 |
+|  3 | Petia  |    500 |
++----+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select name, max(salary) from mytable3 group by name;
++--------+-------------+
+| name   | max(salary) |
++--------+-------------+
+| Petia  |         500 |
+| Vasyil |         200 |
++--------+-------------+
+2 rows in set (0.04 sec)
+
+mysql>
+mysql> create index ind1 on mytable(name asc);
+Query OK, 0 rows affected (0.34 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> create index ind1 on mytable(name asc);
+Query OK, 0 rows affected (0.34 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> drop index ind1 on mytable;
+Query OK, 0 rows affected (0.21 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>

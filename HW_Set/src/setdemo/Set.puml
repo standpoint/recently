@@ -1,0 +1,54 @@
+@startuml
+annotation java.lang.Override
+class java.util.Arrays
+class setdemo.MyArray {
+    - container : int[]
+    - capacity : int
+    - size : int
+    + MyArray()
+    + MyArray(MyArray myarray)
+    + add() : void
+    + get(int index) : int
+    + size() : int
+    + copy() : Container
+    + contains(int element) : boolean
+    + print() : void
+}
+class setdemo.MyList {
+    - container : LinkedList
+    + MyArray()
+    + MyArray(MyArray myarray)
+    + add() : void
+    + get(int index) : int
+    + size() : int
+    + copy() : Container
+    + contains(int element) : boolean
+    + print() : void
+}
+class setdemo.Set {
+    - c : Container
+    + Set(Container c)
+    + union(Set s) : Set
+    + print() : void
+}
+class setdemo.SetDemo {
+    + main(String[] args) : void
+}
+interface setdemo.Container {
+    add() : void
+    get(int index) : int
+    size() : int
+    copy() : Container
+    contains(int element) : boolean
+    print() : void
+}
+setdemo.MyArray ..> java.lang.Override
+setdemo.MyArray ..> java.util.Arrays
+setdemo.MyArray --|> setdemo.Container
+setdemo.MyList ..> java.lang.Override
+setdemo.MyList --|> setdemo.Container
+setdemo.Set -- setdemo.Container
+setdemo.SetDemo -- setdemo.Container
+setdemo.SetDemo -- setdemo.Set
+
+@enduml

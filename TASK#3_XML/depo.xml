@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:noNamespaceSchemaLocation="depo.xsd">
+    <name>OTP Bank</name>
+    <country>Ukraine</country>
+    <type>
+        <demand>
+            <depositor id="ID-00001">
+                <fullname>Dubina M.O.</fullname>
+                <account>26258455049783</account>
+                <amount>10000.00</amount>
+                <profitability>11.0</profitability>
+                <period>730</period>
+            </depositor>
+            <depositor id="ID-000002">
+                <fullname>Goncharenko A.L.</fullname>
+                <account>26258455049745</account>
+                <amount>15000.00</amount>
+                <profitability>11.5</profitability>
+                <period>1095</period>
+            </depositor>
+        </demand>
+        <fixed>
+            <depositor id="ID-000003">
+                <fullname>Kushnarev M.V.</fullname>
+                <account>26258455045501</account>
+                <amount>75000.00</amount>
+                <profitability>23.0</profitability>
+                <period>366</period>
+            </depositor>
+        </fixed>
+        <payment>
+            <depositor id="ID-000004">
+                <fullname>Goncharenko A.L.</fullname>
+                <account>26258455049745</account>
+                <amount>10000.00</amount>
+                <profitability>13.5</profitability>
+                <period>183</period>
+            </depositor>
+        </payment>
+        <savings>
+            <depositor id="ID-000005">
+                <fullname>Gorobec V.F.</fullname>
+                <account>26258455048452</account>
+                <amount>2500.00</amount>
+                <profitability>21.5</profitability>
+                <period>730</period>
+            </depositor>
+        </savings>
+        <metal>
+            <depositor id="ID-000006">
+                <fullname>Bezruk V.K.</fullname>
+                <account>26258455042387</account>
+                <amount>700.00</amount>
+                <profitability>4.3</profitability>
+                <period>730</period>
+            </depositor>
+        </metal>
+    </type>
+</bank>
